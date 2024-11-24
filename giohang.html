@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cửa hàng sách cũ - Giỏ hàng</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <p>Hotline mua hàng: <a href="tel:0366630733" target="_blank">0366630733</a> (7:30-23:30), Tất cả các ngày trong tuần) | <a href="https://m.me/tyhnhzi" target="_blank">Liên hệ</a></p>
+    </div>
+    <!-- End -->
+    <!-- Nav -->
+    <div class="nav">
+        <div class="logo">
+            <img src="img/logo/logo.png" alt="Logo">
+        </div>
+        <ul>
+            <li><a href="index.html"><i class="fa-solid fa-home"></i>Trang chủ</a></li>
+            <li><a href="sanpham.html"><i class="fa-solid fa-book"></i>Sản phẩm</a></li>
+            <li><a href="giohang.html"><i class="fa-solid fa-cart-plus"></i>Giỏ hàng</a></li>
+            <li><a href="gioithieu.html"><i class="fa-solid fa-info-circle"></i>Giới thiệu</a></li>
+            <li><a href="taikhoan.html"><i class="fa-solid fa-circle-user"></i>Tài khoản</a></li>
+        </ul>
+    </div>
+    <!-- End -->
+    <!-- Main -->
+    <div class="main">
+        <!-- Content -->
+        <div class="content">
+            <h1>Giỏ hàng của bạn</h1>
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th>Giá</th>
+                        <th>Số lượng</th>
+                        <th>Tổng</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="cart-items">
+                    <!-- Các sản phẩm sẽ được thêm vào đây bằng JavaScript -->
+                </tbody>
+            </table>
+            <div class="cart-total">
+                Tổng tiền: <span id="cart-total">0</span>đ
+            </div>
+            <div class="cart-buttons">
+                <button onclick="window.location.href='sanpham.html'">Tiếp tục mua hàng</button>
+                <button onclick="checkout()">Thanh toán</button>
+            </div>
+        </div>
+    </div>
+    <!-- End -->
+    <!--Footer-->
+    <div class="footer" style="position: fixed;">
+        <p>&copy2024 Cửa Hàng Sách Online. Tất cả các quyền được bảo lưu.</p>
+    </div>
+    <!-- End -->
+    <script src="js/cart.js"></script>
+    <script>
+        // Hàm hiển thị giỏ hàng
+        function displayCart() {
+            const cartItems = document.getElementById('cart-items');
+            cartItems.innerHTML = '';
+            cart.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.price.toLocaleString()}đ</td>
+                    <td>
+                        <input type="number" class="quantity-input" 
+                            value="${item.quantity}" min="1"
+                            onchange="updateQuantity('${item.id}', this.value)">
+                    </td>
+                    <td>${(item.price * item.quantity).toLocaleString()}đ</td>
+                    <td>
+                        <button class="remove-btn" 
+                                onclick="removeItem('${item.id}')">Xóa</button>
+                    </td>
+                `;
+                cartItems.appendChild(row);
+            });
+            document.getElementById('cart-total').textContent = 
+                getCartTotal().toLocaleString();
+        }
+        // Hàm cập nhật số lượng
+        function updateQuantity(productId, newQuantity) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity = parseInt(newQuantity);
+                if (item.quantity < 1) item.quantity = 1;
+                saveCart();
+                displayCart();
+            }
+        }
+        // Hàm xóa sản phẩm
+        function removeItem(productId) {
+            if (confirm('Bạn có chắc muốn xóa sản phẩm này?')) {
+                cart = cart.filter(item => item.id !== productId);
+                saveCart();
+                displayCart();
+            }
+        }
+        // Hàm thanh toán
+        function checkout() {
+            // Tạo popup thông báo
+            const popup = document.createElement('div');
+            popup.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: white;
+                padding: 30px;
+                border-radius: 10px;
+                box-shadow: 0 0 20px rgba(0,0,0,0.2);
+                text-align: center;
+                z-index: 1000;
+            `;
+            
+            popup.innerHTML = `
+                <h2 style="color: #4CAF50; margin-bottom: 20px;">Thanh toán thành công!</h2>
+                <p style="margin-bottom: 20px;">Cảm ơn bạn đã mua hàng tại cửa hàng của chúng tôi.</p>
+                <button onclick="closePopup(this.parentElement)" style="
+                    background-color: #4CAF50;
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                ">Đóng</button>
+            `;
+
+            // Tạo overlay nền tối
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0,0,0,0.5);
+                z-index: 999;
+            `;
+
+            // Thêm vào trang
+            document.body.appendChild(overlay);
+            document.body.appendChild(popup);
+
+            // Xóa giỏ hàng
+            cart = [];
+            saveCart();
+            displayCart();
+        }
+
+        // Hàm đóng popup
+        function closePopup(popup) {
+            popup.parentElement.previousElementSibling.remove(); // Xóa overlay
+            popup.parentElement.remove(); // Xóa popup
+            window.location.href = 'index.html'; // Chuyển về trang sản phẩm
+        }
+
+        // Hiển thị giỏ hàng khi trang được tải
+        window.onload = displayCart;
+    </script>
+</body>
+</html>
