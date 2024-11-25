@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cửa hàng sách cũ</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/product.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <p>Hotline mua hàng: <a href="tel:0366630733" target="_blank">0366630733</a> (7:30-23:30), Tất cả các ngày trong tuần) | <a href="https://m.me/tyhnhzi" target="_blank">Liên hệ</a></p>
+    </div>
+    <!-- End -->
+    <!-- Nav -->
+    <div class="nav">
+        <div class="logo">
+            <img src="img/logo/logo.png" alt="Logo">
+        </div>
+        <ul>
+            <li><a href="index.html"><i class="fa-solid fa-home"></i>Trang chủ</a></li>
+            <li><a href="sanpham.html"><i class="fa-solid fa-book"></i>Sản phẩm</a></li>
+            <li><a href="giohang.html"><i class="fa-solid fa-cart-plus"></i>Giỏ hàng</a></li>
+            <li><a href="gioithieu.html"><i class="fa-solid fa-info-circle"></i>Giới thiệu</a></li>
+            <li><a href="taikhoan.html"><i class="fa-solid fa-circle-user"></i>Tài khoản</a></li>
+        </ul>
+    </div>
+    <!-- End -->
+    <!-- Main -->
+    <div class="main">
+        <!-- banner -->
+        <div class="banner">
+            <img src="banner.png" alt="banner">
+            <div class="text1">Cửa hàng sách cũ</div>
+            <div class="text2"><p>Mua sắm ngay hôm nay để nhận ưu đãi lớn!</p></div>
+        </div>
+        <!-- Content -->
+        <div class="content">
+            <h2>Một số sản phẩm tiêu biểu</h2>
+        </div>
+        <div class="product">
+            <div class="product-item" data-id="1" data-name="Xoa tay và cười" data-price="45000">
+                <a href="product1.html"><img src="img/1.png" alt="p1"></a>
+                <h3>Xoa tay và cười</h3>
+                <p class="price">45.000đ</p>
+                <button onclick="addToCart(this)">Thêm vào giỏ hàng</button>
+            </div>
+            <div class="product-item" data-id="2" data-name="Giăng lưới bắt chim" data-price="40000">
+                <img src="img/2.png" alt="p2">
+                <h3>Giăng lưới bắt chim</h3>
+                <p class="price">40.000đ</p>
+                <button onclick="addToCart(this)">Thêm vào giỏ hàng</button>
+            </div>
+            <div class="product-item" data-id="3" data-name="Giống như nhạc Bach được chơi trên một chiếc cưa" data-price="50000">
+                <img src="img/3.png" alt="p3">
+                <h3>Giống như nhạc Bach được chơi trên một chiếc cưa</h3>
+                <p class="price">50.000đ</p>
+                <button onclick="addToCart(this)">Thêm vào giỏ hàng</button>
+            </div>
+            <div class="product-item" data-id="4" data-name="Chỉ dành cho những kẻ mộng mơ" data-price="35000">
+                <img src="img/4.png" alt="p4">
+                <h3>Chỉ dành cho những kẻ mộng mơ</h3>
+                <p class="price">35.000đ</p>
+                <button onclick="addToCart(this)">Thêm vào giỏ hàng</button>
+            </div>
+        </div>
+        <div class="product">
+            <div class="product-item" data-id="5" data-name="Tuổi trẻ đáng giá bao nhiêu" data-price="45000">
+                <img src="img/6.png" alt="p5">
+                <h3>Tuổi trẻ đáng giá bao nhiêu</h3>
+                <p class="price">45.000đ</p>
+                <button onclick="addToCart(this)">Thêm vào giỏ hàng</button>
+            </div>
+            <div class="product-item" data-id="6" data-name="Hãy chăm sóc mẹ" data-price="25000">
+                <img src="img/22.png" alt="p6">
+                <h3>Hãy chăm sóc mẹ</h3>
+                <p class="price">25.000đ</p>
+                <button onclick="addToCart(this)">Thêm vào giỏ hàng</button>
+            </div>
+            <div class="product-item" data-id="7" data-name="Yêu là cưới" data-price="45000">
+                <img src="img/21.png" alt="p7">
+                <h3>Yêu là cưới</h3>
+                <p class="price">45.000đ</p>
+                <button onclick="addToCart(this)">Thêm vào giỏ hàng</button>
+            </div>
+            <div class="product-item" data-id="8" data-name="Phụ nữ vạn người mê" data-price="25000">
+                <img src="img/15.png" alt="p8">
+                <h3>Phụ nữ vạn người mê</h3>
+                <p class="price">25.000đ</p>
+                <button onclick="addToCart(this)">Thêm vào giỏ hàng</button>
+            </div>
+        </div>
+    </div>
+    <!-- End -->
+    
+    <!--Footer-->
+    <div class="footer">
+        <p>&copy2024 Cửa Hàng Sách Online. Tất cả các quyền được bảo lưu.</p>
+    </div>
+    <!-- End -->
+    <script src="js/cart.js"></script>
+</body>
+</html>

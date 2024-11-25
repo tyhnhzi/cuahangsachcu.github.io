@@ -1,114 +1,192 @@
 /* Body */
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 /* ul, li, a */
-ul{
-    list-style: none;
+ul {
+  list-style: none;
 }
-ul li a{
-    text-decoration: none;
+ul li a {
+  text-decoration: none;
 }
 /* Header */
-.header{
-    background-color: rgb(46, 46, 46);
-    padding: 10px;
+.header {
+  background-color: rgb(46, 46, 46);
+  padding: 10px;
 }
-.header p{
-    color: white;
-    margin-left: 50px;
+.header p {
+  color: white;
+  margin-left: 50px;
 }
-.header a{
-    color: white;
-    text-decoration: none;
+.header a {
+  color: white;
+  text-decoration: none;
 }
-.header a:hover{
-    color: red;
-    border: 1px solid;
+.header a:hover {
+  color: red;
+  border: 1px solid;
 }
 /* Logo */
-.logo{
-    flex: 0 0 auto;
-    margin-right: 20px;
+.logo {
+  flex: 0 0 auto;
+  margin-right: 20px;
 }
-.logo img{
-    max-height: 50px;
-    width: auto;
+.logo img {
+  max-height: 50px;
+  width: auto;
 }
 /* Navbar */
-.nav{
-    display: flex;
-    background-color: bisque;
-    padding: 13px;
-    border: 1px solid;
-    justify-content: center;
-    gap: 30px
+.nav {
+  display: flex;
+  background-color: bisque;
+  padding: 13px;
+  border: 1px solid;
+  justify-content: center;
+  gap: 30px;
 }
-.nav ul{
-    display: flex;
-    width: 100%;
+.nav ul {
+  display: flex;
+  width: 100%;
 }
-.nav li{
-    flex: 1;
-    text-align: center;
-    font-size: 1.5em;
+.nav li {
+  flex: 1;
+  text-align: center;
+  font-size: 1.5em;
 }
-.nav i{
-    color: black;
+.nav i {
+  color: black;
 }
-.nav a{
-    color: black;
-    display: block;
-    padding: 15px 9px;
-    transition-duration: 0.2s;
+.nav a {
+  color: black;
+  display: block;
+  padding: 15px 9px;
+  transition-duration: 0.2s;
 }
-.nav a:hover{
-	border-bottom: 2px solid #a03c3c;
-	color: #000;
+.nav a:hover {
+  border-bottom: 2px solid #a03c3c;
+  color: #000;
 }
-.nav a:hover i{
-    color: rgb(78, 78, 221);
+.nav a:hover i {
+  color: rgb(78, 78, 221);
 }
 /* Banner */
-.banner{
-    position: relative;
+.banner {
+  position: relative;
 }
-.banner img{
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+.banner img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 .text1 {
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .text2 {
-    color: white;
-    font-size: 17px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, 130%);
+  color: white;
+  font-size: 17px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 130%);
 }
 /* Help */
-.help{
-    width: 100%;
-    float: left;
-    background-color: bisque;
-    padding: 15px 0;
+.help {
+  width: 100%;
+  float: left;
+  background-color: bisque;
+  padding: 15px 0;
 }
 /* Footer */
-.footer{
-    background-color: #202020;
-    color: white;
-    text-align: center;
-    padding: 15px;
+.footer {
+  background-color: #202020;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  width: 100%;
+  bottom: 0;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+  .nav {
+    padding: 10px;
+    gap: 15px;
+  }
+
+  .nav li {
+    font-size: 1.2em;
+  }
+
+  .text1 {
+    font-size: 32px;
+  }
+
+  .text2 {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nav ul {
+    flex-direction: column;
     width: 100%;
-    bottom: 0;
+  }
+
+  .nav li {
+    font-size: 1em;
+  }
+
+  .logo {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .text1 {
+    font-size: 24px;
+  }
+
+  .text2 {
+    font-size: 13px;
+  }
+
+  .header p {
+    margin-left: 20px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .nav li {
+    font-size: 0.9em;
+  }
+
+  .text1 {
+    font-size: 20px;
+  }
+
+  .text2 {
+    font-size: 12px;
+  }
+
+  .header p {
+    margin-left: 10px;
+    font-size: 12px;
+  }
+
+  .logo img {
+    max-height: 40px;
+  }
 }
